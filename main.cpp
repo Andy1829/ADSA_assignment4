@@ -55,19 +55,19 @@ int main() {
     vector<vector<char>> build {{}, {}, {}};
     vector<vector<char>> destroy {{}, {}, {}};
 
-    vector<vector<char>> buildMatrix {{}, {}, {}};
-
     // Input:
     // getline(cin, input);
 
     // Manual Insertion
     input = "000,000,000 ABD,BAC,DCA ABD,BAC,DCA";
+    // input = "011000,101000,110000,000011,000101,000110 ABDFFF,BACFFF,DCAFFF,FFFABD,FFFBAC,FFFDCA ABDFFF,BACFFF,DCAFFF,FFFABD,FFFBAC,FFFDCA";
 
     // Counts which matrix we're observing
     int counter = 0;
 
     istringstream row(input);
     while(row >> input) {           // Grabs space separated values
+        vector<vector<char>> buildMatrix {{}, {}, {}};
         string temp;
         int rowCounter = 0;
 
@@ -77,27 +77,22 @@ int main() {
             buildMatrix.at(rowCounter) = vect;
             rowCounter++;
         }
-        // printMatrix(buildMatrix);
 
         if (counter == 0)
             country = buildMatrix;
-
         if (counter == 1)
             build = buildMatrix;
-
         if (counter == 2) 
             destroy = buildMatrix;
-
         counter++;
     }
 
     // printMatrix(buildMatrix);
     printMatrix(country);
+    cout << endl;
     printMatrix(build);
+    cout << endl;
     printMatrix(destroy);
-
-    
-
 
     // Test Code
     // translateTest();
